@@ -5,6 +5,11 @@ services:
     image: redis:alpine
   db:
     build: ./psql/.
+  worker:
+    build: ./worker/.
+    environment:
+      PSQL_HOST: "db"
+      PSQL_PWD: "123test"
   vote:
     build: ./PyVote/.
     ports:
@@ -12,3 +17,4 @@ services:
     environment:
       REDIS_HOST: "redis"
       PSQL_HOST: "db"
+      PSQL_PWD: "123test"
