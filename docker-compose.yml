@@ -18,3 +18,11 @@ services:
       REDIS_HOST: "redis"
       PSQL_HOST: "db"
       PSQL_PWD: "123test"
+  result:
+    build: ./result
+    command: nodemon server.js
+    volumes:
+      - ./result:/app
+    ports:
+      - "5001:80"
+      - "5858:5858"
